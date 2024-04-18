@@ -11,7 +11,7 @@ const CategoryList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/categories`);
+        const response = await fetch(`https://esther-edu.vercel.app/api/categories`);
         const data = await response.json();
       console.log(response);
         if (!response.ok) {
