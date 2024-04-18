@@ -1,0 +1,154 @@
+.infoContainer {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.textContainer {
+  flex: 1;
+}
+
+.title {
+  font-size: 64px;
+  margin-bottom: 50px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.userImageContainer {
+  width: 55px;
+  height: 55px;
+  position: relative;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--softTextColor);
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.imageContainer {
+  flex: 1;
+  height: 350px;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  gap: 50px;
+}
+
+.post {
+  flex: 5;
+  margin-top: 60px;
+}
+
+.description p {
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1536px) {
+  .title {
+    font-size: 54px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .title {
+    font-size: 48px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .imageContainer {
+    display: none;
+  }
+}
+@media screen and (max-width: 640px) {
+  .title {
+    font-size: 36px;
+  }
+
+  .description p{
+    font-size: 30px;
+  }
+}
+
+.button,
+.addButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--textColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* document styles */
+
+.documentContainer {
+  flex: 1;
+  height: 100px;
+  position: absolute;
+  align-content: center;
+
+}
+
+.documentIcon {
+  width: 5px; /* Ajustez la taille selon vos besoins */
+  height: 5px; /* Ajustez la taille selon vos besoins */
+  margin-right: 10px; /* Marge à droite pour séparer l'icône du lien */
+}
+
+.documentLink {
+  font-size: 25px;
+  text-decoration: none;
+  color: blue; /* Couleur du lien */
+  font-weight: bold;
+}
+
+/* card.module.css */
+
+.documentButton {
+  background-color: #007bff; /* Couleur de fond du bouton */
+  color: #fff; /* Couleur du texte du bouton */
+  padding: 8px 16px; /* Remplissage du bouton */
+  border: none; /* Suppression de la bordure du bouton */
+  border-radius: 4px; /* Arrondi des coins du bouton */
+  cursor: pointer; /* Curseur de la souris */
+  font-size: 16px; /* Taille de la police */
+}
+
+/* Au survol */
+.documentButton:hover {
+  background-color: #0056b3; /* Changement de couleur de fond au survol */
+}
+
+/* Au clic */
+.documentButton:active {
+  background-color: #004080; /* Changement de couleur de fond au clic */
+}
+
+

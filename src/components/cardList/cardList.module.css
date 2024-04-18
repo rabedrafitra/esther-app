@@ -1,0 +1,20 @@
+.container{
+  flex:5
+}
+
+.title{
+  margin: 50px 0px;
+}
+
+.search {
+  margin-bottom: 20px; /* Marge en bas pour séparer visuellement le champ de recherche */
+}
+
+.search input {
+  width: 50%; /* Prend toute la largeur disponible */
+  padding: 10px; /* Ajoute de l'espace à l'intérieur du champ */
+  border: 1px solid #ccc; /* Bordure grise */
+  border-radius: 7px; /* Coins arrondis */
+  font-size: 16px; /* Taille de police */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur du champ */
+}
