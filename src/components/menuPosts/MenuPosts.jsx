@@ -15,11 +15,11 @@ const MenuPosts = () => {
         const data = await response.json();
       console.log(response);
         if (!response.ok) {
-          throw new Error('Failed to fetch categories');
+          throw new Error('Failed to fetch Top Posts');
         }
         setTopPosts(data);
       } catch (error) {
-        console.error("Failed to fetch categories:", error);
+        console.error("Failed to fetch Top Posts:", error);
       }
     };
 
