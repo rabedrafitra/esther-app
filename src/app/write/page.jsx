@@ -7,7 +7,6 @@ import { useEffect, useState, useRef  } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import dynamic from 'next/dynamic';
 import { Editor } from '@tinymce/tinymce-react';
 import type { PutBlobResult } from '@vercel/blob';
 // import ReactQuill from "react-quill";
