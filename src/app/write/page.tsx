@@ -153,7 +153,7 @@ const WritePage = () => {
                 const file = inputFileRef.current.files[0];
       
                 const response = await fetch(
-                  `https://https://esther-edu.vercel.app:3000/api/avatar/upload?filename=${file.name}`,
+                  `/api/avatar/upload?filename=${file.name}`,
                   {
                     method: 'POST',
                     body: file,
