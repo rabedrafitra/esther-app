@@ -81,7 +81,7 @@ const WritePage = () => {
   
 
   const handleSubmit = async () => {
-    const res = await fetch("/api/posts", {
+    const res = await fetch("https://esther-edu.vercel.app/api/posts", {
       method: "POST",
       body: JSON.stringify({
         title,
@@ -153,7 +153,7 @@ const WritePage = () => {
                 const file = inputFileRef.current.files[0];
       
                 const response = await fetch(
-                  `http://localhost:3000/api/avatar/upload?filename=${file.name}`,
+                  `https://https://esther-edu.vercel.app:3000/api/avatar/upload?filename=${file.name}`,
                   {
                     method: 'POST',
                     body: file,
@@ -202,7 +202,7 @@ const WritePage = () => {
 
 {quillActivated && (
     <Editor
-      apiKey="h3l700jjo8j9nsyjj1e7cafopz25ygbjs3qnrt81l59ixpmb"
+      apiKey="yh9te4y2ijayp47xra697mir065czzqqmgjab7e9gasx3uyd"
       initialValue="<p>Écrire ici votre article...</p>"
       init={{
         height: 500,
