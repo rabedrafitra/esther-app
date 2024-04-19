@@ -3,16 +3,14 @@
 import Image from "next/image";
 import axios from 'axios';
 import styles from "./writePage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef  } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import dynamic from 'next/dynamic';
 import { Editor } from '@tinymce/tinymce-react';
-
+import type { PutBlobResult } from '@vercel/blob';
 // import ReactQuill from "react-quill";
-
-
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
@@ -24,34 +22,23 @@ const WritePage = () => {
   const [catSlug, setCatSlug] = useState("");
   // const [ReactQuill, setReactQuill] = useState(null); // Laissez-le null initialement
   const [value, setValue] = useState("");
-  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+  // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
   const [quillActivated, setQuillActivated] = useState(false);
+  const inputFileRef = useRef<HTMLInputElement>(null);
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
+  
+    
   useEffect(() => {
     
-    const uploadImage = async () => {
-      if (file) {
-        const formData = new FormData();
-        formData.append("file", file);
-        try {
-          const response = await axios.post("https://esther-edu.vercel.app/api/upload", formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          });
-          if (response.status === 200) {
-            const data = response.data;
-            setMedia(data.url);
-          } else {
-            console.error("Failed to upload file");
-          }
-        } catch (error) {
-          console.error("Error uploading file:", error);
-        }
+    const setUrlBlob = async () => {
+      if (blob) {
+          setMedia(blob.url);
       }
     };
-    uploadImage();
-  }, [file]);
+    setUrlBlob();
+  }, [blob]);
+
 
   const handleActivateQuill = () => {
     
@@ -60,7 +47,6 @@ const WritePage = () => {
   };
 
  
-  
 
 
   if (status === "loading") {
@@ -95,7 +81,7 @@ const WritePage = () => {
   
 
   const handleSubmit = async () => {
-    const res = await fetch("https://esther-edu.vercel.app/api/posts", {
+    const res = await fetch("https://esther-edu.vercel.app//api/posts", {
       method: "POST",
       body: JSON.stringify({
         title,
@@ -114,7 +100,7 @@ const WritePage = () => {
 
     if (res.status === 200) {
       const data = await res.json();
-      router.push(`https://esther-edu.vercel.app/posts/${data.slug}`);
+      router.push(`/posts/${data.slug}`);
     }
   
 
@@ -125,6 +111,7 @@ const WritePage = () => {
   const handleEditorChange = (content, editor) => {
     setValue(content);
   };
+
 
   return (
     <div className={styles.container}>
@@ -155,9 +142,35 @@ const WritePage = () => {
             <input
               type="file"
               id="image"
-              onChange={(e) => setFile(e.target.files[0])}
-              style={{ display: "none" }}
-            />
+              ref={inputFileRef} 
+              onChange={async (event) => {
+                event.preventDefault();
+      
+                if (!inputFileRef.current?.files) {
+                  throw new Error("No file selected");
+                }
+      
+                const file = inputFileRef.current.files[0];
+      
+                const response = await fetch(
+                  `https://esther-edu.vercel.app/api/avatar/upload?filename=${file.name}`,
+                  {
+                    method: 'POST',
+                    body: file,
+                  },
+                );
+      
+                const newBlob = (await response.json()) as PutBlobResult;
+      
+                setBlob(newBlob);
+                // const url = blob.url;
+                // setMedia(url);
+                
+             
+              }} 
+               />
+
+
             <button className={styles.addButton}>
               <label htmlFor="image">
                 <Image src="/image.png" alt="" width={30} height={30} />
@@ -189,8 +202,7 @@ const WritePage = () => {
 
 {quillActivated && (
     <Editor
-    // apiKey="h3l700jjo8j9nsyjj1e7cafopz25ygbjs3qnrt81l59ixpmb"
-      apiKey='yh9te4y2ijayp47xra697mir065czzqqmgjab7e9gasx3uyd'
+      apiKey="h3l700jjo8j9nsyjj1e7cafopz25ygbjs3qnrt81l59ixpmb"
       initialValue="<p>Écrire ici votre article...</p>"
       init={{
         height: 500,
