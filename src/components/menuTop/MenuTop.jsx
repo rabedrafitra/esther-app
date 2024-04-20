@@ -11,10 +11,7 @@ const MenuTop = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://esther-edu.vercel.app/api/top`,
-    {
-      cache: "no-store",
-    });
+        const response = await fetch(`https://esther-edu.vercel.app/api/top`);
         const data = await response.json();
       console.log(response);
         if (!response.ok) {
