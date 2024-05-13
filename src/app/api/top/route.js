@@ -7,14 +7,13 @@ export const GET = async () => {
       orderBy: {
         views: "desc"
       },
-      take: 4,
-      relationLoadStrategy: 'join',
+       take: 4,
+      // Incluez les relations user et cat
       include: {
         user: true,
         cat: true
       }
     });
-
 
     console.log(topPosts);
 
