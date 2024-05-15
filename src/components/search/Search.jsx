@@ -7,7 +7,9 @@ import Card from "../card/Card";
 const searchData = async (searchTerm) => {
   let url = `https://esther-edu.vercel.app/api/posts?search=${encodeURIComponent(searchTerm)}`;
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed");
