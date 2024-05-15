@@ -8,7 +8,6 @@ export const GET = async () => {
         views: "desc"
       },
        take: 4,
-      // Incluez les relations user et cat
       include: {
         user: true,
         cat: true
