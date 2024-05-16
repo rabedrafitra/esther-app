@@ -21,7 +21,7 @@ export const GET = async (req) => {
       ...(cat && { catSlug: cat }),
       ...(searchTerm && { 
         title: { 
-          startsWith: searchTerm.toLowerCase(), 
+          contains: searchTerm.toLowerCase(), 
         } 
       }), 
     },
