@@ -1,6 +1,6 @@
 "use server"
 
-import prisma from "./lib/prisma"
+import prisma from "./lib/prisma";
 // import { FormDataType, Product, ProductOverviewStats, StockSummary, Transaction } from "@/type"
 import {  Live, Client, Operation } from "@prisma/client"
 import { startOfMonth, endOfMonth } from 'date-fns';

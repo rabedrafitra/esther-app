@@ -5,19 +5,24 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
+<<<<<<< HEAD
   provider = "prisma-client-js"
   previewFeatures = ["driverAdapters"]
 =======
 generator client {
   provider = "prisma-client-js"
 >>>>>>> 42bf426 (MAJ)
+=======
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+>>>>>>> 7567ba9 (MAJ)
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 model Account {
   id                String  @id @default(cuid()) 
@@ -102,6 +107,9 @@ model Comment {
   post      Post     @relation(fields: [postSlug], references: [slug])
 }
 =======
+=======
+
+>>>>>>> 7567ba9 (MAJ)
 model Association {
   id           String        @id @default(uuid())
   name         String
